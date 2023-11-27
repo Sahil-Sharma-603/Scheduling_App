@@ -1,0 +1,409 @@
+
+:root {
+    --dark-body: #4d4c5a;
+    --dark-main: #000000; 
+    --dark-second: #f3f6f4;
+	--dark-rCol: #121212;
+	--dark-colText: #BB86FC;
+    --dark-hover: #323048;
+    --dark-text: #f8fbff;
+
+    --light-body: #9fc5e8;
+    --light-main: #fdfdfd;
+    --light-second: #c3c2c8;
+	--light-rCol: #FFF633;
+	--light-colText: #000000;
+    --light-hover: #edf0f5;
+    --light-text: #151426;
+
+    --blue: #0000ff;
+    --white: #fff;
+
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    --font-family: cursive;
+}
+
+.dark {
+    --bg-body: var(--dark-body);
+    --bg-main: var(--dark-main);
+    --bg-second: var(--dark-second);
+	--bg-rCol: var(--dark-rCol); 
+	--rCol-txt: var(--dark-colText);
+    --color-hover: var(--dark-hover);
+    --color-txt: var(--dark-text);
+}
+
+.light {
+    --bg-body: var(--light-body);
+    --bg-main: var(--light-main);
+    --bg-second: var(--light-second);
+	--bg-rCol: var(--light-rCol);
+	--rCol-txt: var(--light-colText);
+    --color-hover: var(--light-hover);
+    --color-txt: var(--light-text);
+}
+
+html,
+body {
+    height: 100vh;
+    display: grid;
+    place-items: left;
+    font-family: var(--font-family);
+    background-color: var(--bg-body);
+}
+
+.monthChange {
+  height: 40px;
+  width: 30px;
+  border-radius: 50%;
+  padding-left: 15px;
+  align-items: center;
+  cursor: pointer;
+
+}
+.monthChange:hover {
+  background-color: var(--color-hover);
+}
+
+.header-line {
+    position: relative;
+    width: 75%;
+    height: 1px; 
+    left: 12%; 
+    border-bottom: solid;
+    border-bottom-color: #bab3b3; 
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 600;
+  color: var(--color-txt);
+  padding: 10px;
+}
+
+
+#container {
+  position: absolute;
+  height: max-content;
+  width: 50%;
+  background-color: var(--bg-main);
+  border-radius: 30px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+#weekdays {
+  height: 50px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: 600;
+}
+#weekdays div {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  color: #d4af37;
+}
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0px;
+  color: var(--color-txt);
+}
+
+.day {
+  width: 75px;
+  height: 75px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--color-txt);
+  padding: 5px;
+  margin: 5px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+}
+
+.day:hover {
+  border-style: solid;
+  background-color: var(--color-hover);
+}
+
+.day + #currentDay {
+  border-style: solid;
+  border-color: #1487f0;
+  border-radius: 50%;
+}
+.event {
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 50%;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  border-color: var(--bg-body);
+  color: var(--color-txt);
+  height: 25%;
+  width: 25%;
+  overflow: hidden;
+}
+.padding {
+  cursor: default !important;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  position: relative;
+}
+
+.padding:hover {
+  cursor: default !important;
+  border-style: none;
+  background-color: var(--bg-main);
+}
+
+.calendar-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/*yellow right box for displaying months*/
+#rightContainer{
+	float: right;
+	position: absolute;
+	right: 1%;
+	width: 45%;
+	height: 94%;
+	text-align: center;
+	background-color: var(--bg-rCol);
+	color: var(--rCol-txt);
+	border-style: solid;
+	border-radius: 10px;
+	overflow-y:auto;
+}
+
+#eventList{
+	padding-left: 40px;
+	font-size: 125%;
+	text-align: left;
+	color: var(--rCol-txt);
+}
+
+#rightContainer h1{
+	padding-bottom: 10px;
+	text-decoration-line: underline;
+}
+
+#dayTaskContainer{
+	float: right;
+	position: absolute;
+	right: 1%;
+	width: 45%;
+	height: 94%;
+	text-align: center;
+	background-color: var(--bg-rCol);
+	color: var(--rCol-txt);
+	border-style: solid;
+	border-radius: 10px;
+	overflow-y:auto;
+	display: none;
+}
+
+#dayList{
+	padding-left: 40px;
+	font-size: 125%;
+	text-align: left;
+	color: var(--rCol-txt);
+}
+
+#dayTaskContainer h1{
+	padding-bottom: 10px;
+	text-decoration-line: underline;
+}
+
+.toggle {
+    display: flex;
+}
+
+.toggle span {
+    margin-right: 10px;
+    color: var(--color-txt);
+}
+
+
+.dark-mode-switch {
+    position: relative;
+    width: 48px;
+    height: 25px;
+    border-radius: 14px;
+    background-color: var(--bg-second);
+    cursor: pointer;
+}
+
+.dark-mode-switch-ident {
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: var(--bg-main);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: left 0.2s ease-in-out;
+}
+
+.dark .dark-mode-switch .dark-mode-switch-ident {
+    top: 2px;
+    left: calc(2px + 50%);
+}
+
+#newEventModal{
+  display: none;
+  z-index: 20;
+  padding: 25px;
+  background-color: #e8f4fa;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 5px;
+  width: 350px;
+  top: 100px;
+  left: calc(50% - 175px);
+  position: absolute;
+  font-family: sans-serif;
+}
+
+#deleteEventModal {
+  text-align: center;
+  display: none;
+  z-index: 20;
+  padding: 25px;
+  background-color: #e8f4fa;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 5px;
+  width: 40%;
+  height: 50%;
+  top: 10px;
+  left: 25%;
+  position: absolute;
+  font-family: sans-serif;
+}
+
+#eventTitleInput {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 3px gray;
+}
+#eventTitleInput.error {
+  border: 2px solid red;
+}
+#cancelButton{
+  background-color: #d36c6c;
+}
+
+#deleteButton {
+	position: absolute;
+	left: 20%;
+	bottom: 5px;
+	font-size: 16px;
+	font-family: var(--font-family);
+	background-color: #d36c6c;
+}
+
+#deleteAllButton {
+	position: absolute;
+	left: 2%;
+	bottom: 5px;
+	font-size: 16px;
+	font-family: var(--font-family);
+	background-color: #d36c6c;
+}
+
+#saveButton, #closeButton {
+  background-color: #92a1d1;
+}
+
+#closeButton {
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+	font-size: 16px;
+	font-family: var(--font-family);
+}
+#monthButton {
+	position: absolute;
+	left: 10px;
+	cursor: pointer;
+	font-size: 16px;
+	font-family: var(--font-family);
+	background-color: var(--bg-second);
+}
+
+
+.addTask {
+	position: absolute;
+	right: 46%;
+	bottom: 0px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 50px;
+	height: 25px;
+	width: 50px;
+	border-radius: 50%;
+	padding-bottom: 40px;
+	align-items: center;
+	cursor: pointer;
+	
+}
+
+.taskFooter {
+	position: absolute;
+	height: 50px;
+	width: 100%;
+	bottom: 0px;
+}
+.taskFooter .addTask:hover {
+	background-color: var(--color-hover);	
+}
+
+#editButton {
+	position: absolute;
+	left: 10px;
+	bottom: 5px;
+	font-size: 16px;
+	font-family: var(--font-family);
+	background-color: var(--bg-second);
+	cursor: pointer;
+}
+
+
+#eventText {
+  position: absolute;
+  right: 35%;
+  justify-content: center;
+  text-align: center;
+  font-size: 20px;
+  font-family: var(--font-family);
+}
+#modalBackDrop {
+  display: none;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+}
